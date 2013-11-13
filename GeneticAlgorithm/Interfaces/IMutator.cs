@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace GeneticAlgorithm.Interfaces
 {
-    interface IMutator
+    public interface IMutator
     {
+        IBe Mutate(IBe be);
     }
 }

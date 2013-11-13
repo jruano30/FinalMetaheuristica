@@ -9,20 +9,15 @@ namespace GeneticAlgorithm.MotherNature
 {
     class MotherNature : IMotherNature
     {
-        private readonly IDarwin darwin;
+        private readonly DarwinBase darwin;
 
         private readonly IGod god;
 
         private IEnumerable<IBe> population;
 
         private int currentIteration;
-
-        public MotherNature(IEnumerable<IBe> initialPopulation, IGod god) :
-            this(initialPopulation, new Darwin(), god)
-        {
-        }
-
-        public MotherNature(IEnumerable<IBe> initialPopulation, IDarwin darwin, IGod god)
+        
+        public MotherNature(IEnumerable<IBe> initialPopulation, DarwinBase darwin, IGod god)
         {
             this.darwin = darwin;
             population = initialPopulation;

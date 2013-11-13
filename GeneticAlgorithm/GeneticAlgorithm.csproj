@@ -40,12 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IConceiver.cs" />
-    <Compile Include="Interfaces\IDarwin.cs" />
+    <Compile Include="Interfaces\DarwinBase.cs" />
     <Compile Include="Interfaces\IGod.cs" />
     <Compile Include="Interfaces\IMotherNature.cs" />
     <Compile Include="Interfaces\IMutator.cs" />
     <Compile Include="Interfaces\IBe.cs" />
-    <Compile Include="MotherNature\Darwin.cs" />
     <Compile Include="MotherNature\MotherNature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

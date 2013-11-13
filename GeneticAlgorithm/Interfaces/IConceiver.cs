@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace GeneticAlgorithm.Interfaces
 {
-    interface IConceiver
+    public interface IConceiver
     {
+        IBe Conceive(IBe father, IBe mother);
     }
 }
