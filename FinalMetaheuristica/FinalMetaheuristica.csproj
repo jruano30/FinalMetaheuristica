@@ -45,7 +45,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="agaricus-lepiota.data">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GenerateRulesGeneticAlgorithm\GenerateRulesGeneticAlgorithm.csproj">
+      <Project>{d8dd5c8a-afa4-4629-aee2-3dfa66388d59}</Project>
+      <Name>GenerateRulesGeneticAlgorithm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeneticAlgorithm\GeneticAlgorithm.csproj">
+      <Project>{129f153e-4687-4783-acf3-ecfdc11534b3}</Project>
+      <Name>GeneticAlgorithm</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

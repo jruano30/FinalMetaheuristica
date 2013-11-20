@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{129F153E-4687-4783-ACF3-ECFDC11534B3}</ProjectGuid>
+    <ProjectGuid>{D8DD5C8A-AFA4-4629-AEE2-3DFA66388D59}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GeneticAlgorithm</RootNamespace>
-    <AssemblyName>GeneticAlgorithm</AssemblyName>
+    <RootNamespace>GenerateRulesGeneticAlgorithm</RootNamespace>
+    <AssemblyName>GenerateRulesGeneticAlgorithm</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -40,18 +39,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IConceiver.cs" />
-    <Compile Include="Interfaces\DarwinBase.cs" />
-    <Compile Include="Interfaces\IGod.cs" />
-    <Compile Include="Interfaces\IMotherNature.cs" />
-    <Compile Include="Interfaces\IMutator.cs" />
-    <Compile Include="Interfaces\IBe.cs" />
-    <Compile Include="Interfaces\IRandomOperations.cs" />
-    <Compile Include="Model\Operations.cs" />
-    <Compile Include="MotherNature\MotherNature.cs" />
+    <Compile Include="AlgotithmClasses\God.cs" />
+    <Compile Include="AlgotithmClasses\MushroomRule.cs" />
+    <Compile Include="AlgotithmClasses\RandomOperations.cs" />
+    <Compile Include="Interfaces\IDataProvider.cs" />
+    <Compile Include="Model\Mushroom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GeneticAlgorithm\GeneticAlgorithm.csproj">
+      <Project>{129f153e-4687-4783-acf3-ecfdc11534b3}</Project>
+      <Name>GeneticAlgorithm</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AlgotithmClasses\Conceivers\" />
+    <Folder Include="AlgotithmClasses\Mutators\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

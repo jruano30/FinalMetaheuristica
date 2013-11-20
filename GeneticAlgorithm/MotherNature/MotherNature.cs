@@ -1,4 +1,5 @@
 ﻿using GeneticAlgorithm.Interfaces;
+using GeneticAlgorithm.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GeneticAlgorithm.MotherNature
 {
-    class MotherNature : IMotherNature
+    public class MotherNature : IMotherNature
     {
         private readonly DarwinBase darwin;
 
@@ -16,15 +17,18 @@ namespace GeneticAlgorithm.MotherNature
         private IEnumerable<IBe> population;
 
         private int currentIteration;
-        
-        public MotherNature(IEnumerable<IBe> initialPopulation, DarwinBase darwin, IGod god)
+
+        private IRandomOperations randomOperation;
+
+        public MotherNature(IEnumerable<IBe> initialPopulation, DarwinBase darwin, IGod god, IRandomOperations randomOperation)
         {
             this.darwin = darwin;
             population = initialPopulation;
             this.god = god;
+            this.randomOperation = randomOperation;
         }
 
-        public IEnumerable<IBe> Evolve()
+        public IEnumerable<IBe> Evolve(Action<IEnumerable<IBe>> perIteractionAction)
         {
             currentIteration = 0;
             while (currentIteration <= god.maximunIteration)
@@ -33,22 +37,27 @@ namespace GeneticAlgorithm.MotherNature
 
                 Parallel.For(0, god.maximunOffspring, (i) =>
                 {
-                    if ((i + DateTime.Now.Ticks) % 2 == 0)
+                    var operation = randomOperation.GetOperation();
+
+                    switch (operation)
                     {
-                        currentPopulation.Add(darwin.Mutate(god.GetSingle(population, i)));
-                    }
-                    else
-                    {
-                        var couple = god.GetCouple(population, i);
-                        currentPopulation.Add(darwin.Conceive(couple.Item1, couple.Item2));
+                        case Operations.Mutation:
+                            currentPopulation.Add(darwin.Mutate(god.GetSingle(population, i)));
+                            break;
+                        case Operations.CrossOver:
+                            var couple = god.GetCouple(population, i);
+                            currentPopulation.Add(darwin.Conceive(couple.Item1, couple.Item2));
+                            break;
                     }
                 });
-                
+
                 population = population.Union(darwin.CalculateSolution(currentPopulation)).OrderBy(n => n.Solution).Take(god.maximunOffspring);
-                
-                currentIteration++;           
+
+                if(perIteractionAction != null) perIteractionAction.Invoke(population);
+
+                currentIteration++;
             }
-            
+
             return population;
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GeneticAlgorithm.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace GeneticAlgorithm.Interfaces
 {
-    public interface IBe
+    public interface IRandomOperations
     {
-        double Solution { get; set; }
-
-        int Generation { get; set; }
-
-        void CalcularSolucion();
+        Operations GetOperation();
     }
 }

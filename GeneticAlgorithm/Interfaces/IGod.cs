@@ -14,6 +14,6 @@ namespace GeneticAlgorithm.Interfaces
 
         IBe GetSingle(IEnumerable<IBe> pupulation, int index);
 
-        Tuple<IBe,IBe> GetCouple(IEnumerable<IBe> pupulation, int index);
+        Tuple<IBe,IBe> GetCouple(IEnumerable<IBe> population, int index);
     }
 }
