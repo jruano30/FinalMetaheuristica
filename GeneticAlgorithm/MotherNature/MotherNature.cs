@@ -20,40 +20,43 @@ namespace GeneticAlgorithm.MotherNature
 
         private IRandomOperations randomOperation;
 
-        public MotherNature(IEnumerable<IBe> initialPopulation, DarwinBase darwin, IGod god, IRandomOperations randomOperation)
+        private IEqualityComparer<IBe> comparer;
+
+        public MotherNature(IEnumerable<IBe> initialPopulation, DarwinBase darwin, IGod god, IRandomOperations randomOperation, IEqualityComparer<IBe> comparer)
         {
             this.darwin = darwin;
             population = initialPopulation;
             this.god = god;
             this.randomOperation = randomOperation;
+            this.comparer = comparer;
         }
 
-        public IEnumerable<IBe> Evolve(Action<IEnumerable<IBe>> perIteractionAction)
+        public IEnumerable<IBe> Evolve(Action<IEnumerable<IBe>, int> perIteractionAction)
         {
             currentIteration = 0;
             while (currentIteration <= god.maximunIteration)
             {
                 List<IBe> currentPopulation = new List<IBe>();
-
-                Parallel.For(0, god.maximunOffspring, (i) =>
+                                
+                for (int i = 0; i < god.maximunOffspring; i++)
                 {
                     var operation = randomOperation.GetOperation();
 
                     switch (operation)
                     {
                         case Operations.Mutation:
-                            currentPopulation.Add(darwin.Mutate(god.GetSingle(population, i)));
+                            currentPopulation = currentPopulation.Concat(darwin.Mutate(god.GetSingle(population, i))).ToList();
                             break;
                         case Operations.CrossOver:
                             var couple = god.GetCouple(population, i);
-                            currentPopulation.Add(darwin.Conceive(couple.Item1, couple.Item2));
+                            currentPopulation = currentPopulation.Concat(darwin.Conceive(couple.Item1, couple.Item2)).ToList();
                             break;
                     }
-                });
+                }
 
-                population = population.Union(darwin.CalculateSolution(currentPopulation)).OrderBy(n => n.Solution).Take(god.maximunOffspring);
+                population = population.Union(darwin.CalculateSolution(currentPopulation)).OrderBy(n => -n.Solution).Distinct(comparer).Take(god.maximunOffspring).ToList();
 
-                if(perIteractionAction != null) perIteractionAction.Invoke(population);
+                if (perIteractionAction != null) perIteractionAction.Invoke(population, currentIteration);
 
                 currentIteration++;
             }

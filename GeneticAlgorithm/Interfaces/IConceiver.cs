@@ -8,6 +8,6 @@ namespace GeneticAlgorithm.Interfaces
 {
     public interface IConceiver
     {
-        IBe Conceive(IBe father, IBe mother);
+        IEnumerable<IBe> Conceive(IBe father, IBe mother);
     }
 }

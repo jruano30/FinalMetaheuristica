@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GeneticAlgorithm.Interfaces
 {
-    public abstract class DarwinBase
+    public class DarwinBase
     {
         IEnumerable<IMutator> mutators;
 
@@ -18,13 +18,15 @@ namespace GeneticAlgorithm.Interfaces
             this.conceivers = conceivers;
         }
 
-        public IBe Mutate(IBe xBe)
+        public IEnumerable<IBe> Mutate(IBe xBe)
         {
             var random = new Random();
+
             return mutators.ElementAt(random.Next(0, mutators.Count())).Mutate(xBe);
+            
         }
 
-        public IBe Conceive(IBe father, IBe mother)
+        public IEnumerable<IBe> Conceive(IBe father, IBe mother)
         {
             var random = new Random();
             return conceivers.ElementAt(random.Next(0, conceivers.Count())).Conceive(father, mother);

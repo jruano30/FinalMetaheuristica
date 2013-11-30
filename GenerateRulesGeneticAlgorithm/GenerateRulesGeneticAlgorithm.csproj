@@ -39,9 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlgotithmClasses\Conceivers\FatherLeftMotherRightConceiver.cs" />
+    <Compile Include="AlgotithmClasses\Conceivers\MotherLeftFatherRightConceiver.cs" />
+    <Compile Include="AlgotithmClasses\DarwinRules.cs" />
     <Compile Include="AlgotithmClasses\God.cs" />
     <Compile Include="AlgotithmClasses\MushroomRule.cs" />
+    <Compile Include="AlgotithmClasses\MushroomRuleComparer.cs" />
+    <Compile Include="AlgotithmClasses\Mutators\EspecifyRuleMutator.cs" />
+    <Compile Include="AlgotithmClasses\Mutators\GeneralizeRuleMutator.cs" />
     <Compile Include="AlgotithmClasses\RandomOperations.cs" />
+    <Compile Include="Providers\RulesProvider.cs" />
     <Compile Include="Interfaces\IDataProvider.cs" />
     <Compile Include="Model\Mushroom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,10 +59,7 @@
       <Name>GeneticAlgorithm</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AlgotithmClasses\Conceivers\" />
-    <Folder Include="AlgotithmClasses\Mutators\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

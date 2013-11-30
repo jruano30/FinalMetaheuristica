@@ -8,6 +8,6 @@ namespace GeneticAlgorithm.Interfaces
 {
     public interface IMotherNature
     {
-        IEnumerable<IBe> Evolve(Action<IEnumerable<IBe>> perIteractionAction);
+        IEnumerable<IBe> Evolve(Action<IEnumerable<IBe>, int> perIteractionAction);
     }
 }

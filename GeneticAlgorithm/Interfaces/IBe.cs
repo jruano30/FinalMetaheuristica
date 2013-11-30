@@ -8,7 +8,7 @@ namespace GeneticAlgorithm.Interfaces
 {
     public interface IBe
     {
-        double Solution { get; set; }
+        double Solution { get; }
 
         int Generation { get; set; }
 

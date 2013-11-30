@@ -9,7 +9,7 @@ namespace GenerateRulesGeneticAlgorithm.Model
 {
     public class Mushroom
     {
-        public char classValue { get; set; }
+        public char classValue { get; set; } // (classes: edible=e, poisonous=p)
         public char capShape { get; set; }
         public char capSurface { get; set; }
         public char capColor { get; set; }
@@ -66,30 +66,58 @@ namespace GenerateRulesGeneticAlgorithm.Model
 
         public bool IsEqual(Mushroom another)
         {
-            if (another.classValue == 0 || another.classValue == classValue) return true;
-            if (another.capShape == 0 || another.capShape == capShape) return true;
-            if (another.capSurface == 0 || another.capSurface == capSurface) return true;
-            if (another.capColor == 0 || another.capColor == capColor) return true;
-            if (another.bruises == 0 || another.bruises == bruises) return true;
-            if (another.odor == 0 || another.odor == odor) return true;
-            if (another.gillAttachment == 0 || another.gillAttachment == gillAttachment) return true;
-            if (another.gillSpacing == 0 || another.gillSpacing == gillSpacing) return true;
-            if (another.gillSize == 0 || another.gillSize == gillSize) return true;
-            if (another.gillColor == 0 || another.gillColor == gillColor) return true;
-            if (another.stalkShape == 0 || another.stalkShape == stalkShape) return true;
-            if (another.stalkRoot == 0 || another.stalkRoot == stalkRoot) return true;
-            if (another.stalkSurfaceAboveRing == 0 || another.stalkSurfaceAboveRing == stalkSurfaceAboveRing) return true;
-            if (another.stalkSurfaceBelowRing == 0 || another.stalkSurfaceBelowRing == stalkSurfaceBelowRing) return true;
-            if (another.stalkColorAboveRing == 0 || another.stalkColorAboveRing == stalkColorAboveRing) return true;
-            if (another.stalkColorBelowRing == 0 || another.stalkColorBelowRing == stalkColorBelowRing) return true;
-            if (another.veilType == 0 || another.veilType == veilType) return true;
-            if (another.veilColor == 0 || another.veilColor == veilColor) return true;
-            if (another.ringNumber == 0 || another.ringNumber == ringNumber) return true;
-            if (another.ringType == 0 || another.ringType == ringType) return true;
-            if (another.sporePrintColor == 0 || another.sporePrintColor == sporePrintColor) return true;
-            if (another.population == 0 || another.population == population) return true;
-            if (another.habitat == 0 || another.habitat == habitat) return true;
-            return false;
+            if (another.classValue != '0' && another.classValue != classValue) return false;
+            if (another.capShape != '0' && another.capShape != capShape) return false;
+            if (another.capSurface != '0' && another.capSurface != capSurface) return false;
+            if (another.capColor != '0' && another.capColor != capColor) return false;
+            if (another.bruises != '0' && another.bruises != bruises) return false;
+            if (another.odor != '0' && another.odor != odor) return false;
+            if (another.gillAttachment != '0' && another.gillAttachment != gillAttachment) return false;
+            if (another.gillSpacing != '0' && another.gillSpacing != gillSpacing) return false;
+            if (another.gillSize != '0' && another.gillSize != gillSize) return false;
+            if (another.gillColor != '0' && another.gillColor != gillColor) return false;
+            if (another.stalkShape != '0' && another.stalkShape != stalkShape) return false;
+            if (another.stalkRoot != '0' && another.stalkRoot != stalkRoot) return false;
+            if (another.stalkSurfaceAboveRing != '0' && another.stalkSurfaceAboveRing != stalkSurfaceAboveRing) return false;
+            if (another.stalkSurfaceBelowRing != '0' && another.stalkSurfaceBelowRing != stalkSurfaceBelowRing) return false;
+            if (another.stalkColorAboveRing != '0' && another.stalkColorAboveRing != stalkColorAboveRing) return false;
+            if (another.stalkColorBelowRing != '0' && another.stalkColorBelowRing != stalkColorBelowRing) return false;
+            if (another.veilType != '0' && another.veilType != veilType) return false;
+            if (another.veilColor != '0' && another.veilColor != veilColor) return false;
+            if (another.ringNumber != '0' && another.ringNumber != ringNumber) return false;
+            if (another.ringType != '0' && another.ringType != ringType) return false;
+            if (another.sporePrintColor != '0' && another.sporePrintColor != sporePrintColor) return false;
+            if (another.population != '0' && another.population != population) return false;
+            if (another.habitat != '0' && another.habitat != habitat) return false;
+            return true;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22}",
+                classValue,
+                capShape,
+                capSurface,
+                capColor,
+                bruises,
+                odor,
+                gillAttachment,
+                gillSpacing,
+                gillSize,
+                gillColor,
+                stalkShape,
+                stalkRoot,
+                stalkSurfaceAboveRing,
+                stalkSurfaceBelowRing,
+                stalkColorAboveRing,
+                stalkColorBelowRing,
+                veilType,
+                veilColor,
+                ringNumber,
+                ringType,
+                sporePrintColor,
+                population,
+                habitat);
         }
     }
 }

@@ -8,6 +8,6 @@ namespace GeneticAlgorithm.Interfaces
 {
     public interface IMutator
     {
-        IBe Mutate(IBe be);
+        IEnumerable<IBe> Mutate(IBe be);
     }
 }
