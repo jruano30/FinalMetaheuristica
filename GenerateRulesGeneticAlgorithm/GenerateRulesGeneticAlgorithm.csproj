@@ -48,6 +48,7 @@
     <Compile Include="AlgotithmClasses\Mutators\EspecifyRuleMutator.cs" />
     <Compile Include="AlgotithmClasses\Mutators\GeneralizeRuleMutator.cs" />
     <Compile Include="AlgotithmClasses\RandomOperations.cs" />
+    <Compile Include="GeneticsAlogorithmController.cs" />
     <Compile Include="Providers\RulesProvider.cs" />
     <Compile Include="Interfaces\IDataProvider.cs" />
     <Compile Include="Model\Mushroom.cs" />
